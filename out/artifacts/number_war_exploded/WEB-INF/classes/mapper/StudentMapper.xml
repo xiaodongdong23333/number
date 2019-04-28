@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whd.dao.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.whd.entity.Student">
+    <id column="student_Id" jdbcType="INTEGER" property="studentId" />
+    <result column="student_Name" jdbcType="VARCHAR" property="studentName" />
+    <result column="student_Department" jdbcType="VARCHAR" property="studentDepartment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    student_Id, student_Name, student_Department
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student_information
+    where student_Id = #{studentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from student_information
+    where student_Id = #{studentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whd.entity.Student">
+    insert into student_information (student_Id, student_Name, student_Department
+      )
+    values (#{studentId,jdbcType=INTEGER}, #{studentName,jdbcType=VARCHAR}, #{studentDepartment,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.whd.entity.Student">
+    insert into student_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="studentId != null">
+        student_Id,
+      </if>
+      <if test="studentName != null">
+        student_Name,
+      </if>
+      <if test="studentDepartment != null">
+        student_Department,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="studentId != null">
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="studentName != null">
+        #{studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentDepartment != null">
+        #{studentDepartment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whd.entity.Student">
+    update student_information
+    <set>
+      <if test="studentName != null">
+        student_Name = #{studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentDepartment != null">
+        student_Department = #{studentDepartment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where student_Id = #{studentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whd.entity.Student">
+    update student_information
+    set student_Name = #{studentName,jdbcType=VARCHAR},
+      student_Department = #{studentDepartment,jdbcType=VARCHAR}
+    where student_Id = #{studentId,jdbcType=INTEGER}
+  </update>
+</mapper>

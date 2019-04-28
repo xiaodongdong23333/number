@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whd.dao.CourseMapper">
+  <resultMap id="BaseResultMap" type="com.whd.entity.Course">
+    <id column="course_Id" jdbcType="INTEGER" property="courseId" />
+    <id column="teacher_Id" jdbcType="INTEGER" property="teacherId" />
+    <result column="course_Name" jdbcType="VARCHAR" property="courseName" />
+    <result column="time_Start" jdbcType="VARCHAR" property="timeStart" />
+    <result column="time_End" jdbcType="VARCHAR" property="timeEnd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    course_Id, teacher_Id, course_Name, time_Start, time_End
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.whd.entity.CourseKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from course_information
+    where course_Id = #{courseId,jdbcType=INTEGER}
+      and teacher_Id = #{teacherId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.whd.entity.CourseKey">
+    delete from course_information
+    where course_Id = #{courseId,jdbcType=INTEGER}
+      and teacher_Id = #{teacherId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whd.entity.Course">
+    insert into course_information (course_Id, teacher_Id, course_Name, 
+      time_Start, time_End)
+    values (#{courseId,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, 
+      #{timeStart,jdbcType=VARCHAR}, #{timeEnd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whd.entity.Course">
+    insert into course_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        course_Id,
+      </if>
+      <if test="teacherId != null">
+        teacher_Id,
+      </if>
+      <if test="courseName != null">
+        course_Name,
+      </if>
+      <if test="timeStart != null">
+        time_Start,
+      </if>
+      <if test="timeEnd != null">
+        time_End,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherId != null">
+        #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStart != null">
+        #{timeStart,jdbcType=VARCHAR},
+      </if>
+      <if test="timeEnd != null">
+        #{timeEnd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whd.entity.Course">
+    update course_information
+    <set>
+      <if test="courseName != null">
+        course_Name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStart != null">
+        time_Start = #{timeStart,jdbcType=VARCHAR},
+      </if>
+      <if test="timeEnd != null">
+        time_End = #{timeEnd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where course_Id = #{courseId,jdbcType=INTEGER}
+      and teacher_Id = #{teacherId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whd.entity.Course">
+    update course_information
+    set course_Name = #{courseName,jdbcType=VARCHAR},
+      time_Start = #{timeStart,jdbcType=VARCHAR},
+      time_End = #{timeEnd,jdbcType=VARCHAR}
+    where course_Id = #{courseId,jdbcType=INTEGER}
+      and teacher_Id = #{teacherId,jdbcType=INTEGER}
+  </update>
+</mapper>
