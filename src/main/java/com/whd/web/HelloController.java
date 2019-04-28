@@ -51,7 +51,15 @@ public class HelloController {
             newRecord.setCheckIn(signService.selectByPrimaryKey(key).getCheckIn());
             newRecord.setCheckOut(record.getCheckIn());
             signService.updateByPrimaryKey(newRecord);
-           // if(courseService.selectByPrimaryKey())
+            //签到成功
+            if((courseService.selectByPrimaryKey(record.getCourseId()).getTimeStart().compareTo(newRecord.getCheckIn()) > 0)
+                    && (newRecord.getCheckOut().compareTo(courseService.selectByPrimaryKey(record.getCourseId()).getTimeEnd())) > 0){
+                newRecord.setIsSign("1");
+            }else{
+                //签到失败
+                newRecord.setIsSign("0");
+            }
+            signService.updateByPrimaryKey(newRecord);
         }else{
             return"/new/main";
         }
