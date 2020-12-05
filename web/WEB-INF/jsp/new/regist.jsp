@@ -13,11 +13,11 @@
 <body>
 <center>
     <br><br>
-    <h2 style="color:green">Main</h2>
+    <h2 style="color:green">注册</h2>
     <br><br>
 
-    <a href="/main/student"><button type="button" class="btn btn-primary">学生登录</button></a>
-    <a href="/main/teacher"><button type="button" class="btn btn-primary">教师登录</button></a>
+    <a href="/main/staff"><button type="button" class="btn btn-primary">用户注册</button></a>
+    <a href="/main/teacher"><button type="button" class="btn btn-primary">管理员注册</button></a>
 
 </center>
 </body>

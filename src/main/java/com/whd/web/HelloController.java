@@ -28,12 +28,12 @@ public class HelloController {
 
     @RequestMapping("/main")
     public String main(){
-        return "new/main";
+        return "main";
     }
 
-    @RequestMapping("/main/student")
+    /*@RequestMapping("/main/student")
     public String student(){
-        return "/new/student";}
+        return "/new/student";}*/
 
     @RequestMapping(value = "main/student/add",method = RequestMethod.POST)  //请求映射
     public String add(Sign record){
@@ -61,9 +61,9 @@ public class HelloController {
             }
             signService.updateByPrimaryKey(newRecord);
         }else{
-            return"/new/main";
+            return "main";
         }
-        return"/new/main";
+        return "main";
     }
 
     @RequestMapping("/main/teacher")
