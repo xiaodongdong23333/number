@@ -18,10 +18,10 @@ public class RegistController {
     @Autowired
     private StaffService staffService;
 
-    /*@RequestMapping("/main")
+    @RequestMapping("/main")
     public String main(){
         return "main";
-    }*/
+    }
 
     @RequestMapping("/main/regist")
     public String regist(){
