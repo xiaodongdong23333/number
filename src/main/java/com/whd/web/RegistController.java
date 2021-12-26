@@ -4,6 +4,7 @@ import com.whd.constant.C;
 import com.whd.entity.Staff;
 import com.whd.entity.StaffRecord;
 import com.whd.service.StaffService;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,7 @@ public class RegistController {
 
     @RequestMapping(value = "main/staff/add",method = RequestMethod.POST)  //请求映射
     public String add(StaffRecord record){
+        //如果输入姓名为空，则弹出“姓名栏不能为空对话框”
         Staff staff = new Staff();
         //姓名
         staff.setName(record.getStaffName());
