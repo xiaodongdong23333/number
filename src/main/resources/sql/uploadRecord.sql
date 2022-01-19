@@ -35,9 +35,10 @@ CREATE TABLE `update_file_table` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '业务资料更新表';
 
 
--- 初始化数据
-INSERT INTO `main_file_table` (`main_file_id`, `upload_file_id`, `update_file_id`)
-VALUES (111, 222, 333);
+
+
+
+
 -- 初始化数据
 INSERT INTO `main_file_table` (`main_file_id`, `upload_file_id`, `update_file_id`)
 VALUES (111, 222, 333);
