@@ -19,10 +19,7 @@ CREATE TABLE `upload_file_table` (
   `upload_time` date NOT NULL COMMENT '上传时间', -- 自动填写
   `upload_remarks` varchar(1000) COMMENT '上传备注',
   PRIMARY KEY (`upload_file_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '业务资料上传表';
-
-
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '业务资料上传表'
 
 
 -- 业务资料更新表
@@ -38,6 +35,9 @@ CREATE TABLE `update_file_table` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '业务资料更新表';
 
 
+-- 初始化数据
+INSERT INTO `main_file_table` (`main_file_id`, `upload_file_id`, `update_file_id`)
+VALUES (111, 222, 333);
 -- 初始化数据
 INSERT INTO `main_file_table` (`main_file_id`, `upload_file_id`, `update_file_id`)
 VALUES (111, 222, 333);
