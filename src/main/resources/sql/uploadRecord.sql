@@ -1,8 +1,9 @@
 -- 业务资料主表
 CREATE TABLE `main_file_table` (
-  `main_file_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主文件id', -- AUTO_INCREMENT可使id递增
+--   `main_file_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主文件id', -- AUTO_INCREMENT可使id递增
   `upload_file_id` int(10) NOT NULL COMMENT '上传文件id',
   `update_file_id` varchar(200) NOT NULL COMMENT '更新文件id', -- 可能多次更新，存储多个id
+  `related_history_file_id`
   PRIMARY KEY (`main_file_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '业务资料主表';
 
@@ -19,6 +20,10 @@ CREATE TABLE `upload_file_table` (
   `upload_remarks` varchar(1000) COMMENT '上传备注',
   PRIMARY KEY (`upload_file_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '业务资料上传表';
+
+
+
+
 
 -- 业务资料更新表
 CREATE TABLE `update_file_table` (
